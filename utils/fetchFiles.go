@@ -12,7 +12,8 @@ func FetchFiles(dirPath string, files *[]string, mutex *sync.Mutex) {
 	entries, err := os.ReadDir(dirPath)
 
 	if err != nil {
-		log.Panicln(err)
+		log.Fatalln(err)
+		return
 	}
 
 	for _, entry := range entries {
