@@ -17,7 +17,8 @@ func main() {
 	dirPath, _ := stdin.ReadString('\n')
 
 	files := make([]string, 0)
-	utils.FetchFiles(utils.CleanStr(dirPath), &files)
+	var fetchFilesMutex sync.Mutex
+	utils.FetchFiles(utils.CleanStr(dirPath), &files, &fetchFilesMutex)
 
 	var wg sync.WaitGroup
 
